@@ -19,9 +19,7 @@
         <p class="list-group-item"><%= review.content %> | <%= review.rating %>/5</p>
       <% end %>
     </ul>
-    <div class="d-flex">
-      <%= link_to "Back to list", restaurants_path, class: "btn btn-dark mt-4" %>
-      <%= link_to "Add a new review", new_restaurant_review_path(@restaurant), class: "btn btn-dark mt-4 ms-4" %>
-    </div>
+    <%= render 'reviews/review_form', restaurant: @restaurant, review: Review.new %>
+    <%= link_to "Back to list", restaurants_path, class: "btn btn-dark mt-4" %>
   </div>
 </div>

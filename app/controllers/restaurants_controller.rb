@@ -1,3 +1,5 @@
+require_relative '../models/review'
+
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show]
 
@@ -8,14 +10,20 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.create(restaurant_params)
 
-    redirect_to restaurant_path(@restaurant)
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def new
     @restaurant = Restaurant.new
   end
 
-  def show; end
+  def show
+    @review = Review.new
+  end
 
   private
 
