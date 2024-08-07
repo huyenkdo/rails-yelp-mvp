@@ -1,2 +1,11 @@
-<h1>Restaurants</h1>
-<p>Find me in app/views/restaurants/index.html.erb</p>
+<div class="row justify-content-center mt-4">
+  <div class="col-6">
+    <h1>Restaurants</h1>
+    <ul class="list-group list-group-flush mt-4">
+      <% @restaurants.each do |restaurant| %>
+        <%= link_to restaurant.name + " at " + restaurant.address, restaurant_path(restaurant), class: "list-group-item" %>
+      <% end %>
+    </ul>
+    <%= link_to "Add a new restaurant", restaurants_new_path, class: "btn btn-dark mt-4" %>
+  </div>
+</div>
